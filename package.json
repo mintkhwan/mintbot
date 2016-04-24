@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mintkhwan/mintbot#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "request": "^2.72.0"
   }
 }
