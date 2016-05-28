@@ -4,6 +4,9 @@ var request = require('request')
 var app = express()
 var text
 var token = 'CAAOCHbO8ZBuUBAESPFlZCGsg1w0uz7lTWrEALvOt8T0rtu1LlElBBZAUDDZAo3VPoAnXhfjFzRyoMdTAOCHYDH22RZCSyVRVaS3SP6cvmnIRZAW8ZAHrOmyhcylbDFKPIPd6YRUFPdaLXJM9o8oxdQJRt56AHZAip1xYt2PIKUxsYCzbYg9sAYhEkWzC8ddFuDDIgGsAMgFqNAZDZD'
+var num = 0
+var n = 0
+var count = 0
 
 app.use(bodyParser.json())
 
@@ -27,11 +30,40 @@ app.post('/webhook/', function (req, res) {
       text = event.message.text
       // Handle a text message from this sender
       console.log(text)
-      if (text === 'Hi') {
-        sendTextMessage(sender, 'Hi! I am CoFen')
-      } else {
-        //sendTextMessage(sender, 'Text received, echo: ' + text.substring(0, 200))
-      }
+      sendTextMessage(sender, text)
+      // if (num === 0) {
+      //   if (text === 'เริ่ม') {
+      //     sendTextMessage(sender, 'ทายดูครับ 1-100 \n พิมพ์ จบ เพื่อเลิกเล่น')
+      //     num = 1
+      //     n = Math.floor((Math.random() * 100) + 1)
+      //     console.log(n)
+      //   } else {
+      //     sendTextMessage(sender, 'พิมพ์ เริ่ม เพื่อเริ่มเกม')
+      //     num = 0
+      //   }
+      // }
+      // if (num === 1) {
+      //   if (text != 'เริ่ม') {
+      //     if (text > n) {
+      //       sendTextMessage(sender, "มากไปครับ :'(")
+      //       count++
+      //     }else if (text < n) {
+      //       sendTextMessage(sender, "น้อยไปครับ :'(")
+      //       count++
+      //     }else if (text == n) {
+      //       count++
+      //       sendTextMessage(sender, 'ถูกต้องครับ ทำไป ' + count + ' ครั้ง' + '\n' + '8|')
+      //       num = 0
+      //       count = 0
+      //     }else if (text == 'จบ') {
+      //       sendTextMessage(sender, 'กากหวะ เลิกเล่นง่ายๆ')
+      //       count = 0
+      //       num = 0
+      //     } else {
+      //       sendTextMessage(sender, 'พิมพ์เลข 1-100 ซิเว้ย')
+      //     }
+      //   }
+      // }
     }
   }
   res.sendStatus(200)
