@@ -30,40 +30,40 @@ app.post('/webhook/', function (req, res) {
       text = event.message.text
       // Handle a text message from this sender
       console.log(text)
-      //sendTextMessage(sender, text)
-      if (num === 0) {
-        if (text === 'เริ่ม') {
-          sendTextMessage(sender, 'ทายดูครับ 1-100 \n พิมพ์ จบ เพื่อเลิกเล่น')
-          num = 1
-          n = Math.floor((Math.random() * 100) + 1)
-          console.log(n)
-        } else {
-          sendTextMessage(sender, 'พิมพ์ เริ่ม เพื่อเริ่มเกม')
-          num = 0
-        }
-      }
-      if (num === 1) {
-        if (text != 'เริ่ม') {
-          if (text > n) {
-            sendTextMessage(sender, "มากไปครับ :'(")
-            count++
-          }else if (text < n) {
-            sendTextMessage(sender, "น้อยไปครับ :'(")
-            count++
-          }else if (text == n) {
-            count++
-            sendTextMessage(sender, 'ถูกต้องครับ ทำไป ' + count + ' ครั้ง' + '\n' + '8|')
-            num = 0
-            count = 0
-          }else if (text == 'จบ') {
-            sendTextMessage(sender, 'กากหวะ เลิกเล่นง่ายๆ')
-            count = 0
-            num = 0
-          } else {
-            sendTextMessage(sender, 'พิมพ์เลข 1-100 ซิเว้ย')
-          }
-        }
-      }
+      sendTextMessage(sender, text)
+      // if (num === 0) {
+      //   if (text === 'เริ่ม') {
+      //     sendTextMessage(sender, 'ทายดูครับ 1-100 \n พิมพ์ จบ เพื่อเลิกเล่น')
+      //     num = 1
+      //     n = Math.floor((Math.random() * 100) + 1)
+      //     console.log(n)
+      //   } else {
+      //     sendTextMessage(sender, 'พิมพ์ เริ่ม เพื่อเริ่มเกม')
+      //     num = 0
+      //   }
+      // }
+      // if (num === 1) {
+      //   if (text != 'เริ่ม') {
+      //     if (text > n) {
+      //       sendTextMessage(sender, "มากไปครับ :'(")
+      //       count++
+      //     }else if (text < n) {
+      //       sendTextMessage(sender, "น้อยไปครับ :'(")
+      //       count++
+      //     }else if (text == n) {
+      //       count++
+      //       sendTextMessage(sender, 'ถูกต้องครับ ทำไป ' + count + ' ครั้ง' + '\n' + '8|')
+      //       num = 0
+      //       count = 0
+      //     }else if (text == 'จบ') {
+      //       sendTextMessage(sender, 'กากหวะ เลิกเล่นง่ายๆ')
+      //       count = 0
+      //       num = 0
+      //     } else {
+      //       sendTextMessage(sender, 'พิมพ์เลข 1-100 ซิเว้ย')
+      //     }
+      //   }
+      // }
     }
   }
   res.sendStatus(200)
