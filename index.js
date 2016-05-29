@@ -48,6 +48,9 @@ app.post('/webhook/', function (req, res) {
         if (num2 > num1) {
           sendTextMessage(sender, num2)
         }
+        if (num1 === num2) {
+          sendTextMessage(sender, 'same num')
+        }
       }
 
       if (getFunc === 'min'){
@@ -57,18 +60,24 @@ app.post('/webhook/', function (req, res) {
         if (num2 < num1) {
           sendTextMessage(sender, num2)
         }
+        if (num1 === num2) {
+          sendTextMessage(sender, 'same num')
+        }
       }
 
-      // if (getFunc === 'avg') {
-      //   var sum = 0
-      //   var num = []
-      //
-      //   num = gettext.split(' ')
-      //   for (var i = 0;i < num.length;i++) {
-      //     sum += parseFloat(num[i])
-      //   }
-      //   sendTextMessage(sender, 'avg : ' + sum/num.length)
-      // }
+      if (getFunc === 'avg') {
+        var num = []
+        var sum = 0
+        var gettext = text.substring(4, text.length)
+        console.log('text : ' + gettext)
+        num = gettext.split(' ')
+        console.log('split : ' + num + ' len = ' + num.length)
+        for (var i = 0;i < num.length;i++) {
+          sum += parseFloat(num[i])
+        }
+        console.log('sum : ' + sum + 'avg : ' + sum/num.length)
+        sendTextMessage(sender, 'avg : ' + sum/num.length)
+      }
 
       //////////////////////////////////////////////////////////////////////////
       //sendTextMessage(sender, text)
