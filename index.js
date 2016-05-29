@@ -45,6 +45,7 @@ app.post('/webhook/', function (req, res) {
         var sum = num1 + num2
         console.log('sum : ' + sum)
         sendTextMessage(sender, 'sum : ' + sum)
+        sendTextMessage(sender, sum)
       }
 
       //////////////////////////////////////////////////////////////////////////
