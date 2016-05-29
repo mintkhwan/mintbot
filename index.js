@@ -41,9 +41,14 @@ app.post('/webhook/', function (req, res) {
 
       if (getFunc === 'sum'){
         var sum = num1 + num2
-        console.log('sum : '+sum)
+        //console.log('sum : '+sum)
         sendTextMessage(sender, sum)
       }
+
+      if (getFunc === 'max'){
+        sendTextMessage(sender, max)
+      }
+
 
       //////////////////////////////////////////////////////////////////////////
       //sendTextMessage(sender, text)
