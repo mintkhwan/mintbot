@@ -68,6 +68,7 @@ app.post('/webhook/', function (req, res) {
       if (getFunc === 'avg') {
         var num = []
         var sum = 0
+        var gettext = text.substring(4, text.length)
         num = gettext.split(' ')
         for (var i = 0;i < num.length;i++) {
           sum += parseFloat(num[i])
