@@ -59,7 +59,16 @@ app.post('/webhook/', function (req, res) {
         }
       }
 
+      if (getFunc === 'avg') {
+        var sum = 0
+        var num = []
 
+        num = gettext.split(' ')
+        for (var i = 0;i < num.length;i++) {
+          sum += parseFloat(num[i])
+        }
+        sendTextMessage(sender, 'avg : ' + sum/num.length)
+      }
 
       //////////////////////////////////////////////////////////////////////////
       //sendTextMessage(sender, text)
