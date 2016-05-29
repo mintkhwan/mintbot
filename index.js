@@ -33,20 +33,26 @@ app.post('/webhook/', function (req, res) {
       var getFunc = text.substring(0, 3)
       //console.log('func : ' + getFunc)
 
-      var getText = text.substring(4, text.length)
-      var space = getText.search(' ')
-      var num1 = parseFloat(getText.substring(0, space))
-      var num2 = parseFloat(getText.substring(space, getText.length))
-      //console.log('number1 : ' + num1 + ' number2 : ' + num2)
-
       if (getFunc === 'sum'){
+        var getText = text.substring(4, text.length)
+        var space = getText.search(' ')
+        var num1 = parseFloat(getText.substring(0, space))
+        var num2 = parseFloat(getText.substring(space, getText.length))
+        //console.log('number1 : ' + num1 + ' number2 : ' + num2)
         var sum = num1 + num2
         //console.log('sum : '+sum)
         sendTextMessage(sender, sum)
       }
 
       if (getFunc === 'max'){
-        sendTextMessage(sender, max)
+        var getText = text.substring(4, text.length)
+        var space = getText.search(' ')
+        var num1 = parseFloat(getText.substring(0, space))
+        var num2 = parseFloat(getText.substring(space, getText.length))
+        //console.log('number1 : ' + num1 + ' number2 : ' + num2)
+        var sum = num1 + num2
+        //console.log('sum : '+sum)
+        sendTextMessage(sender, sum)
       }
 
 
