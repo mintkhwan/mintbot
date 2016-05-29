@@ -28,9 +28,28 @@ app.post('/webhook/', function (req, res) {
     var sender = event.sender.id
     if (event.message && event.message.text) {
       text = event.message.text
-      // Handle a text message from this sender
+
       console.log(text)
-      sendTextMessage(sender, text)
+      var sln = text.length
+      console.log('length : ' + sln)
+      var getFunc = text.substring(0, 3)
+      console.log('func : ' + getFunc)
+
+      if (getFunc === 'sum') {
+        var gettext = text.substring(4, text.length)
+        console.log('number : ' + gettext)
+        var space = gettext.search(' ')
+        var num1 = parseFloat(gettext.substring(0, space))
+        var num2 = parseFloat(gettext.substring(space, gettext.length))
+        console.log('number1 : ' + num1 + ' number2 : ' + num2)
+        var sum = num1 + num2
+        console.log('sum : ' + sum)
+        sendTextMessage(sender, 'sum : ' + sum)
+      }
+
+      //////////////////////////////////////////////////////////////////////////
+      //sendTextMessage(sender, text)
+      //////////////////////////////////////////////////////////////////////////
       // if (num === 0) {
       //   if (text === 'เริ่ม') {
       //     sendTextMessage(sender, 'ทายดูครับ 1-100 \n พิมพ์ จบ เพื่อเลิกเล่น')
@@ -64,6 +83,7 @@ app.post('/webhook/', function (req, res) {
       //     }
       //   }
       // }
+      //////////////////////////////////////////////////////////////////////////
     }
   }
   res.sendStatus(200)
