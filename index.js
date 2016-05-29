@@ -75,7 +75,6 @@ app.post('/webhook/', function (req, res) {
         }
         sendTextMessage(sender, sum/num.length)
       }
-
     }
   }
   res.sendStatus(200)
