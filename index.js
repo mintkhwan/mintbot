@@ -42,7 +42,13 @@ app.post('/webhook/', function (req, res) {
       }
 
       if (getFunc === 'max'){
-        sendTextMessage(sender, 'max')
+        if (num1 > num2) {
+          sendTextMessage(sender, num1)
+        }
+        if (num2 > num1) {
+          sendTextMessage(sender, num2)
+        }
+        //sendTextMessage(sender, 'max')
       }
 
 
