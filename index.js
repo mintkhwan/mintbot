@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
           sendTextMessage(sender, num2)
         }
         if (num1 === num2) {
-          sendTextMessage(sender, 'same num')
+          sendTextMessage(sender, 'equal')
         }
       }
 
@@ -61,22 +61,18 @@ app.post('/webhook/', function (req, res) {
           sendTextMessage(sender, num2)
         }
         if (num1 === num2) {
-          sendTextMessage(sender, 'same num')
+          sendTextMessage(sender, 'equal')
         }
       }
 
       if (getFunc === 'avg') {
         var num = []
         var sum = 0
-        var gettext = text.substring(4, text.length)
-        console.log('text : ' + gettext)
         num = gettext.split(' ')
-        console.log('split : ' + num + ' len = ' + num.length)
         for (var i = 0;i < num.length;i++) {
           sum += parseFloat(num[i])
         }
-        console.log('sum : ' + sum + 'avg : ' + sum/num.length)
-        sendTextMessage(sender, 'avg : ' + sum/num.length)
+        sendTextMessage(sender, sum/num.length)
       }
 
       //////////////////////////////////////////////////////////////////////////
