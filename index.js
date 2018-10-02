@@ -1,12 +1,12 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var request = require('request')
-var app = express()
-var text
-var token = 'CAAOCHbO8ZBuUBAESPFlZCGsg1w0uz7lTWrEALvOt8T0rtu1LlElBBZAUDDZAo3VPoAnXhfjFzRyoMdTAOCHYDH22RZCSyVRVaS3SP6cvmnIRZAW8ZAHrOmyhcylbDFKPIPd6YRUFPdaLXJM9o8oxdQJRt56AHZAip1xYt2PIKUxsYCzbYg9sAYhEkWzC8ddFuDDIgGsAMgFqNAZDZD'
-var num = 0
-var n = 0
-var count = 0
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const app = express()
+let text = ''
+const token = 'CAAOCHbO8ZBuUBAESPFlZCGsg1w0uz7lTWrEALvOt8T0rtu1LlElBBZAUDDZAo3VPoAnXhfjFzRyoMdTAOCHYDH22RZCSyVRVaS3SP6cvmnIRZAW8ZAHrOmyhcylbDFKPIPd6YRUFPdaLXJM9o8oxdQJRt56AHZAip1xYt2PIKUxsYCzbYg9sAYhEkWzC8ddFuDDIgGsAMgFqNAZDZD'
+let num = 0
+let n = 0
+let count = 0
 
 app.use(bodyParser.json())
 
@@ -22,22 +22,22 @@ app.get('/webhook/', function (req, res) {
 })
 
 app.post('/webhook/', function (req, res) {
-  var messaging_events = req.body.entry[0].messaging
-  for (var i = 0; i < messaging_events.length; i++) {
-    var event = req.body.entry[0].messaging[i]
-    var sender = event.sender.id
+  let messaging_events = req.body.entry[0].messaging
+  for (const i = 0; i < messaging_events.length; i++) {
+    let event = req.body.entry[0].messaging[i]
+    let sender = event.sender.id
     if (event.message && event.message.text) {
       text = event.message.text
 
-      var sln = text.length
-      var getFunc = text.substring(0, 3)
-      var getText = text.substring(4, text.length)
-      var space = getText.search(' ')
-      var num1 = parseFloat(getText.substring(0, space))
-      var num2 = parseFloat(getText.substring(space, getText.length))
+      let sln = text.length
+      let getFunc = text.substring(0, 3)
+      let getText = text.substring(4, text.length)
+      let space = getText.search(' ')
+      let num1 = parseFloat(getText.substring(0, space))
+      let num2 = parseFloat(getText.substring(space, getText.length))
 
       if (getFunc === 'sum'){
-        var sum = num1 + num2
+        let sum = num1 + num2
         sendTextMessage(sender, sum)
       }
 
@@ -66,11 +66,11 @@ app.post('/webhook/', function (req, res) {
       }
 
       if (getFunc === 'avg') {
-        var num = []
-        var sum = 0
-        var gettext = text.substring(4, text.length)
+        let num = []
+        let sum = 0
+        let gettext = text.substring(4, text.length)
         num = gettext.split(' ')
-        for (var i = 0;i < num.length;i++) {
+        for (const i = 0;i < num.length;i++) {
           sum += parseFloat(num[i])
         }
         sendTextMessage(sender, sum/num.length)
@@ -87,7 +87,7 @@ app.listen(app.get('port'), function () {
 })
 
 function sendTextMessage (sender, text) {
-  var messageData = {
+  let messageData = {
     text: text
   }
   request({
