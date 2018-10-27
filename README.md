@@ -6,17 +6,17 @@
 ## To install packages
 ### init
 ```
-$ sudo npm init
+$ npm init
 ```
 ### express
 ```
-$ sudo npm install express --save
+$ npm install express --save
 ```
 ### body-parser
 ```
-$ sudo npm install body-parser
+$ npm install body-parser
 ```
 ### request
 ```
-$ sudo npm install request --save
+$ npm install request --save
 ```
